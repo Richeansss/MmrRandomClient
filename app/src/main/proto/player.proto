@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.example.mrrrandomclient.grpc";
+
+service PlayerService {
+  rpc RegisterPlayer (RegisterRequest) returns (PlayerResponse);
+  rpc Battle (BattleRequest) returns (BattleResponse);
+  rpc GetRanking (RankingRequest) returns (RankingResponse);
+}
+
+message RegisterRequest {
+  string name = 1;
+}
+
+message PlayerResponse {
+  string name = 1;
+  int32 score = 2;
+  int32 number = 3;
+}
+
+message BattleRequest {}
+
+message BattleResponse {
+  string result = 1;
+}
+
+message RankingRequest {}
+
+message RankingResponse {
+  repeated PlayerResponse players = 1;
+}
